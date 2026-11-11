@@ -8,11 +8,12 @@ function resetWorld(optns)
     disp('Resetting the world...');
     
     % TODO: 01 Get robot handle
-    % **Complete Code**
+    r = optns{'rHandle'};
     
     % TODO: 02 Create Empty Simulation message
-    % **Complete Code**
+    msg = rosmessage(r.res_client);
     
     % TODO: 03 Call reset service
+    call(r.res_client, msg);
     
 end
