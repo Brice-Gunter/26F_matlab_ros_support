@@ -63,7 +63,7 @@ classdef rosClassHandle_UR5e
             r.ik_weights              = [0.25, 0.25, 0.25, 0.1, 0.1, 0.1];  
 
             % TF
-            r.tftree                  = % **Complete Code**
+            r.tftree                  = rostf('DataFormat','struct');
             r.tf_listening_time       = 10;
         end
 
