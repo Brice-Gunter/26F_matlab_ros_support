@@ -33,10 +33,10 @@ function [traj_result,mat_joint_traj] = moveTo(mat_R_T_M,optns)
     [mat_joint_traj,rob_joint_names] = convertPoseTraj2JointTraj(mat_traj,optns);
 
     %% Visualize trajectory
-    if r.debug
+    if optns{'debug'}
         rate = rateControl(1);
         for i = 1:size(mat_joint_traj,1)
-            r.robot.show(mat_joint_traj(i,:),FastUpdate=true,PreservePlot=false);
+            r.UR5eROBOT.show(mat_joint_traj(i,:),FastUpdate=true,PreservePlot=false);
             rate.waitfor;
         end
     end

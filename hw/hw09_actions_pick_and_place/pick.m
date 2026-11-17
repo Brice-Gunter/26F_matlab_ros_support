@@ -35,8 +35,8 @@ function grip_result = pick(strategy,objectData,optns)
             zOffset = 0.145;
             doGripValue = 0.62;
         elseif strcmp(string(label), "can")
-            zOffset = 0.1;
-            doGripValue = 0.24;
+            zOffset = 0.09;
+            doGripValue = 0.23;
         elseif strcmp(string(label), "bottle")
             zOffset = 0.12;
             doGripValue = 0.36;
@@ -45,14 +45,17 @@ function grip_result = pick(strategy,objectData,optns)
     %% 2) Move to desired location
         % Account for base offset + Hover over object
         if strcmp(strategy,'topdown')
-            over_R_T_M = lift(mat_R_T_M,zOffset);
+            over_R_T_M = lift(mat_R_T_M,zOffset+0.10);
             MoveToOb = moveTo(over_R_T_M, optns);
+            over_R_T_M = lift(mat_R_T_M,zOffset);
             disp(over_R_T_M);
+            MoveToOb = moveTo(over_R_T_M, optns);
         
         elseif strcmpi(strategy,'direct')
             traj_result = moveTo(mat_R_T_M,optns);
         end
         % Grip object
         [grip_result,grip_state] = doGrip('pick',optns,doGripValue); 
+        pause(1.5);
         grip_result = grip_result.ErrorCode;
 end
