@@ -36,7 +36,7 @@ function grip_result = pick(strategy,objectData,optns)
             doGripValue = 0.62;
         elseif strcmp(string(label), "can")
             zOffset = 0.09;
-            doGripValue = 0.23;
+            doGripValue = [0.22 0.225 0.23];
         elseif strcmp(string(label), "bottle")
             zOffset = 0.12;
             doGripValue = 0.36;
@@ -55,7 +55,9 @@ function grip_result = pick(strategy,objectData,optns)
             traj_result = moveTo(mat_R_T_M,optns);
         end
         % Grip object
-        [grip_result,grip_state] = doGrip('pick',optns,doGripValue); 
-        pause(1.5);
+        for g = doGripValue
+            [grip_result,grip_state] = doGrip('pick',optns,g); 
+            pause(1.5);
+        end
         grip_result = grip_result.ErrorCode;
 end

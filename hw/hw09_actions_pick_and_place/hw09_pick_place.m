@@ -49,7 +49,7 @@ disp('Getting object goal pose(s)...')
 models = getModels(optns);
 
 % Number of models to pick (you can hard code or randomize)
-names = {'gCan1','rCan1','yCan1','gCan4'};
+names = {'gCan1','gCan4','yCan3','rCan3','rCan1','yCan1','rCan2'};
 n = numel(names);
 
 % Bin locations
